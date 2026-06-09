@@ -1,0 +1,26 @@
+services:
+  web1:
+    image: nginx:latest
+    container_name: kn05-web1
+    volumes:
+      # Named Volume - Long Syntax
+      - type: volume
+        source: kn05-named-vol
+        target: /mnt/named
+      # Bind Mount - Long Syntax
+      - type: bind
+        source: ./binddata
+        target: /mnt/bind
+      # tmpfs Mount - Long Syntax
+      - type: tmpfs
+        target: /mnt/tmpfs
+
+  web2:
+    image: nginx:latest
+    container_name: kn05-web2
+    volumes:
+      # Named Volume - Short Syntax
+      - kn05-named-vol:/mnt/named
+
+volumes:
+  kn05-named-vol:
