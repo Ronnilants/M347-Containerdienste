@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>KN05 - C) mount web1</title>
+<style>
+body{background:#1e1e1e;color:#d4d4d4;font-family:Consolas,monospace;padding:30px;font-size:15px;}
+h2{color:#4ec9b0;border-bottom:1px solid #555;padding-bottom:8px;}
+pre{background:#252526;padding:20px;border-radius:4px;line-height:1.6;}
+.hl-vol{color:#4ec9b0;font-weight:bold;} .hl-bind{color:#dcdcaa;font-weight:bold;}
+.hl-tmpfs{color:#c586c0;font-weight:bold;} .label{color:#ce9178;font-weight:bold;}
+.tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:13px;margin-left:10px;}
+</style></head><body>
+<h2>KN05 – C) docker compose: mount im ersten Container (kn05-web1)</h2>
+<p class="label">Befehl: docker exec kn05-web1 mount | grep /mnt/</p>
+<pre>
+<span class="hl-tmpfs">tmpfs on /mnt/tmpfs type tmpfs (rw,nosuid,nodev,noexec,relatime)</span>   ← tmpfs Mount
+<span class="hl-bind">C:\ on /mnt/bind type 9p (rw,noatime,dirsync,aname=drvfs;path=C:\;...)</span>   ← Bind Mount
+<span class="hl-vol">/dev/sde on /mnt/named type ext4 (rw,relatime)</span>   ← Named Volume
+</pre>
+<table style="border-collapse:collapse;margin-top:15px;width:100%">
+<tr style="background:#333"><th style="padding:8px;text-align:left">Pfad</th><th style="padding:8px;text-align:left">Typ</th><th style="padding:8px;text-align:left">Speichertyp</th></tr>
+<tr><td style="padding:8px;color:#c586c0">/mnt/tmpfs</td><td style="padding:8px">tmpfs</td><td style="padding:8px">tmpfs (flüchtig, nur RAM)</td></tr>
+<tr style="background:#2a2a2a"><td style="padding:8px;color:#dcdcaa">/mnt/bind</td><td style="padding:8px">9p</td><td style="padding:8px">Bind Mount (Host-Verzeichnis ./binddata)</td></tr>
+<tr><td style="padding:8px;color:#4ec9b0">/mnt/named</td><td style="padding:8px">ext4</td><td style="padding:8px">Named Volume (von Docker verwaltet)</td></tr>
+</table>
+</body></html>

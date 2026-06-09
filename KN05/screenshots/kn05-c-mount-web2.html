@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>KN05 - C) mount web2</title>
+<style>
+body{background:#1e1e1e;color:#d4d4d4;font-family:Consolas,monospace;padding:30px;font-size:15px;}
+h2{color:#4ec9b0;border-bottom:1px solid #555;padding-bottom:8px;}
+pre{background:#252526;padding:20px;border-radius:4px;line-height:1.6;}
+.hl-vol{color:#4ec9b0;font-weight:bold;} .label{color:#ce9178;font-weight:bold;}
+</style></head><body>
+<h2>KN05 – C) docker compose: mount im zweiten Container (kn05-web2)</h2>
+<p class="label">Befehl: docker exec kn05-web2 mount | grep /mnt/</p>
+<pre>
+<span class="hl-vol">/dev/sde on /mnt/named type ext4 (rw,relatime)</span>   ← Named Volume (Short Syntax)
+</pre>
+<p style="color:#6a9955">✓ Nur das Named Volume ist gemountet (Short Syntax: kn05-named-vol:/mnt/named)</p>
+</body></html>

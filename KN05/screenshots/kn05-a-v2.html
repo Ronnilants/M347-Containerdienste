@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>KN05 - A) Bind Mount - Version 2</title>
+<style>
+body{background:#1e1e1e;color:#d4d4d4;font-family:Consolas,monospace;padding:30px;font-size:15px;}
+h2{color:#4ec9b0;border-bottom:1px solid #555;padding-bottom:8px;}
+pre{background:#252526;padding:20px;border-left:4px solid #dcdcaa;border-radius:4px;line-height:1.6;}
+.label{color:#ce9178;font-weight:bold;} .note{color:#6a9955;font-style:italic;}
+</style></head><body>
+<h2>KN05 – A) Bind Mount: Script Version 2 (nach Änderung auf Host)</h2>
+<p class="label">Befehl: docker exec kn05-bindmount bash /mnt/scripts/myscript.sh</p>
+<p class="note">// Skript wurde auf dem HOST geändert — Container NICHT neu gestartet!</p>
+<pre>
+=======================================
+  KN05 Bind Mount Test - Version 2 (UPDATED!)
+  Autor: Ronnilants
+=======================================
+
+Hostname des Containers: 27008904427a
+Aktuelles Datum/Uhrzeit: Tue Jun  9 07:36:34 UTC 2026
+Betriebssystem: Linux 27008904427a 5.15.167.4-microsoft-standard-WSL2 x86_64
+
+Meine einzigartige Nachricht:
+  --&gt; Hallo aus dem Bind Mount! Dieses Skript laeuft im Container,
+      aber der Code liegt auf dem Host-System.
+
+  --&gt; NEUE ZEILE: Der Host hat dieses Skript veraendert,
+      ohne den Container neu zu starten! Das ist die Magie von Bind Mounts.
+</pre>
+</body></html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>KN05 - B) Named Volume</title>
+<style>
+body{background:#1e1e1e;color:#d4d4d4;font-family:Consolas,monospace;padding:30px;font-size:15px;}
+h2{color:#4ec9b0;border-bottom:1px solid #555;padding-bottom:8px;}
+h3{color:#9cdcfe;}
+pre{background:#252526;padding:20px;border-radius:4px;line-height:1.6;margin-bottom:20px;}
+.c1{border-left:4px solid #569cd6;} .c2{border-left:4px solid #c586c0;}
+.label{color:#ce9178;font-weight:bold;}
+</style></head><body>
+<h2>KN05 – B) Named Volume: Zwei Container, ein gemeinsames Volume</h2>
+
+<h3>Container 1 (kn05-vol1) schreibt:</h3>
+<p class="label">docker exec kn05-vol1 bash -c "echo 'Nachricht von Container 1...' >> /mnt/shared/messages.txt"</p>
+
+<h3>Container 2 (kn05-vol2) schreibt:</h3>
+<p class="label">docker exec kn05-vol2 bash -c "echo 'Nachricht von Container 2...' >> /mnt/shared/messages.txt"</p>
+
+<h3>Container 1 liest /mnt/shared/messages.txt:</h3>
+<pre class="c1">
+Nachricht von Container 1 (kn05-vol1): Hallo!
+Zeitstempel: 06/09/2026 09:37:00
+Nachricht von Container 2 (kn05-vol2): Ich sehe den Inhalt!
+Zeitstempel: 06/09/2026 09:37:01
+</pre>
+
+<h3>Container 2 liest /mnt/shared/messages.txt:</h3>
+<pre class="c2">
+Nachricht von Container 1 (kn05-vol1): Hallo!
+Zeitstempel: 06/09/2026 09:37:00
+Nachricht von Container 2 (kn05-vol2): Ich sehe den Inhalt!
+Zeitstempel: 06/09/2026 09:37:01
+</pre>
+<p style="color:#6a9955">✓ Beide Container sehen exakt denselben Inhalt im geteilten Volume kn05-shared-vol</p>
+</body></html>
