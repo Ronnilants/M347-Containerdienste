@@ -1,0 +1,30 @@
+services:
+  db:
+    image: mariadb:latest
+    container_name: m347-kn04b-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: adminpassword
+    networks:
+      kn04b-network:
+
+  web:
+    image: ronnilants/kn02:kn02b-web
+    container_name: m347-kn04b-web
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      kn04b-network:
+
+networks:
+  kn04b-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          ip_range: 172.20.5.0/24
+          gateway: 172.20.5.254

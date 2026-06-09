@@ -1,0 +1,66 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    home: /home/ubuntu
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0bBpJIWXkZN8Q... ronnilants@student
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLehpD... lehrperson@tbz
+
+ssh_pwauth: false
+disable_root: false
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - software-properties-common
+
+write_files:
+  - path: /home/ubuntu/docker-compose.yml
+    content: |
+      services:
+        db:
+          image: mariadb:latest
+          container_name: m347-kn04-db
+          environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: mysql
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: adminpassword
+          networks:
+            kn04-network:
+
+        web:
+          image: ronnilants/kn02:kn02b-web
+          container_name: m347-kn04-web
+          ports:
+            - "80:80"
+          depends_on:
+            - db
+          networks:
+            kn04-network:
+
+      networks:
+        kn04-network:
+          driver: bridge
+          ipam:
+            config:
+              - subnet: 172.10.0.0/16
+                ip_range: 172.10.5.0/24
+                gateway: 172.10.5.254
+    owner: ubuntu:ubuntu
+
+runcmd:
+  - curl -fsSL https://get.docker.com -o get-docker.sh
+  - sh get-docker.sh
+  - usermod -aG docker ubuntu
+  - cd /home/ubuntu
+  - docker compose up -d
+
+final_message: "KN04 Docker Compose Cloud Setup abgeschlossen! Webserver laeuft auf Port 80."
