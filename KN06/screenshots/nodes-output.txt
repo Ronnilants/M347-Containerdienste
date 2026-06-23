@@ -1,0 +1,4 @@
+﻿NAME               STATUS   ROLES    AGE     VERSION    INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION   CONTAINER-RUNTIME
+ip-172-31-80-237   Ready    <none>   51s     v1.31.14   172.31.80.237   <none>        Ubuntu 22.04.5 LTS   6.8.0-1057-aws   containerd://1.6.28
+ip-172-31-83-190   Ready    <none>   2m42s   v1.31.14   172.31.83.190   <none>        Ubuntu 22.04.5 LTS   6.8.0-1057-aws   containerd://1.6.28
+ip-172-31-94-88    Ready    <none>   34s     v1.31.14   172.31.94.88    <none>        Ubuntu 22.04.5 LTS   6.8.0-1057-aws   containerd://1.6.28
