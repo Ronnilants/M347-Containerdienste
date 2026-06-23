@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 echo "======================================="
 echo "  KN05 Bind Mount Test - Version 2 (UPDATED!)"
 echo "  Autor: Ronnilants"
